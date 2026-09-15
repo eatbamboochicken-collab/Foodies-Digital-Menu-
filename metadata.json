@@ -1,0 +1,6 @@
+{
+  "name": "FOODIES Digital Ordering System",
+  "description": "Official digital menu for FOODIES featuring handcrafted Vegetarian, Classic, and Deluxe pizzas with real-time size selection for pickup and dine-in.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

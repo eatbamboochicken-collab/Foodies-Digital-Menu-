@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>FOODIES Digital Ordering System</title>
+    <meta name="description" content="Official digital menu for FOODIES featuring handcrafted Vegetarian, Classic, and Deluxe pizzas with real-time size selection for pickup and dine-in." />
+    <meta property="og:title" content="FOODIES Digital Ordering System" />
+    <meta property="og:description" content="Official digital menu for FOODIES featuring handcrafted Vegetarian, Classic, and Deluxe pizzas with real-time size selection for pickup and dine-in." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#111215" />
+
+    <!-- Google Fonts: Plus Jakarta Sans (Premium Modern Geometric Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Pure Modular CSS (Zero build step, high performance) -->
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link" id="skip-to-content">Skip to menu</a>
+
+    <!-- Premium Foodies Launch Screen (App-like Cinematic Welcome Experience) -->
+    <div class="foodies-launch-screen" id="foodies-launch-screen" role="status" aria-live="polite" aria-label="Launching FOODIES Digital Menu">
+      <div class="launch-stage">
+        <!-- Prominent Brand Lockup with Animated Hearth Flame -->
+        <div class="launch-brand-wrap" id="launch-brand-wrap">
+          <div class="launch-brand-mark" id="launch-brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+            </svg>
+            <span class="launch-glow-radial" aria-hidden="true"></span>
+          </div>
+
+          <h1 class="launch-brand-title">
+            FOOD<span class="launch-brand-accent">IES</span>
+          </h1>
+          <span class="launch-brand-rule" aria-hidden="true"></span>
+        </div>
+
+        <!-- Welcoming Typography with Smooth Cinematic Sequence -->
+        <div class="launch-message-box">
+          <p class="launch-welcome-text" id="launch-welcome-text">
+            WELCOME TO FOODIES
+          </p>
+        </div>
+
+        <!-- Subtle Understated Progress Indicator Line -->
+        <div class="launch-progress-track" aria-hidden="true">
+          <div class="launch-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Header: Restaurant Visual Identity (Black, Warm Golden Yellow & Foodies Red Flame) -->
+    <header class="foodies-header" id="app-header">
+      <div class="foodies-header-container">
+        <!-- Brand Lockup -->
+        <a href="#" class="brand-identity" id="brand-home-link" aria-label="FOODIES Handcrafted Pizzas">
+          <div class="brand-logo-mark" aria-hidden="true">
+            <!-- Foodies Flame & Oven Hearth Mark -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+            </svg>
+          </div>
+          <div class="brand-text-lockup">
+            <span class="brand-name">FOOD<span class="brand-name-accent">IES</span></span>
+            <span class="brand-subtext">PIZZA</span>
+          </div>
+        </a>
+
+        <!-- Refined Order Options Selector (Pickup • Dine-In) -->
+        <div class="header-order-options" id="header-order-options" role="region" aria-label="Order fulfillment options">
+          <span class="order-options-label">ORDER OPTIONS</span>
+          <div class="order-options-segmented" role="radiogroup" aria-label="Order fulfillment option">
+            <button type="button" class="order-opt-btn active" id="opt-pickup" role="radio" aria-checked="true" data-mode="pickup">
+              <span class="opt-pip" aria-hidden="true"></span>
+              <span class="opt-label">Pickup</span>
+            </button>
+            <span class="order-opt-sep" aria-hidden="true">•</span>
+            <button type="button" class="order-opt-btn" id="opt-dinein" role="radio" aria-checked="false" data-mode="dinein">
+              <span class="opt-pip" aria-hidden="true"></span>
+              <span class="opt-label">Dine-In</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sticky Category Navigation Bar (Pizza Only: ALL · VEGETARIAN · CLASSIC · DELUXE) -->
+    <nav class="category-nav-section" id="category-navigation-bar" aria-label="Pizza Categories">
+      <div class="category-nav-wrapper">
+        <ul class="category-nav-list" role="tablist" id="category-tabs-container">
+          <li role="presentation">
+            <button class="category-tab active" role="tab" id="tab-all" aria-selected="true" aria-controls="menu-items-container" data-category="all">ALL</button>
+          </li>
+          <li role="presentation">
+            <button class="category-tab" role="tab" id="tab-vegetarian" aria-selected="false" aria-controls="menu-items-container" data-category="vegetarian">VEGETARIAN</button>
+          </li>
+          <li role="presentation">
+            <button class="category-tab" role="tab" id="tab-classic" aria-selected="false" aria-controls="menu-items-container" data-category="classic">CLASSIC</button>
+          </li>
+          <li role="presentation">
+            <button class="category-tab" role="tab" id="tab-deluxe" aria-selected="false" aria-controls="menu-items-container" data-category="deluxe">DELUXE</button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Container: Immediate Menu Items Flow -->
+    <main class="foodies-main" id="main-content">
+      <!-- Menu Items Container (Rendered dynamically with high visual hierarchy) -->
+      <div id="menu-items-container" role="region" aria-label="Foodies Menu Catalog">
+        <!-- Dynamic menu items rendered here -->
+      </div>
+    </main>
+
+    <!-- Composed Foodies Finale Footer (3 Distinct Vertical Layers) -->
+    <footer class="foodies-footer" id="app-footer">
+      <div class="footer-container">
+        <!-- Layer 01: FOODIES BRAND (Dominant with gold accent detail) -->
+        <div class="footer-layer footer-layer-brand">
+          <div class="footer-brand-lockup">
+            <span class="footer-brand-title">FOOD<span class="footer-brand-accent">IES</span></span>
+            <span class="footer-brand-rule" aria-hidden="true"></span>
+          </div>
+          <p class="footer-brand-tagline">
+            Stone-baked pizzas, made fresh for Zimbabwe.
+          </p>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Layer 02: ZIMBABWE IDENTITY BLOCK -->
+        <div class="footer-layer footer-layer-identity">
+          <div class="identity-header-row">
+            <span class="identity-heading">PROUDLY SERVING ZIMBABWE</span>
+            <span class="identity-flag" role="img" aria-label="Zimbabwe Flag">🇿🇼</span>
+          </div>
+          <div class="identity-pillars">
+            <span>Fresh</span>
+            <span class="pillar-sep" aria-hidden="true">•</span>
+            <span>Local</span>
+            <span class="pillar-sep" aria-hidden="true">•</span>
+            <span>Made for You</span>
+          </div>
+          <div class="identity-location">
+            <span class="location-dot" aria-hidden="true"></span>
+            <span>HARARE, ZIMBABWE</span>
+          </div>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Layer 03: WARSTREET EXPERIENCE MODEL SIGNATURE & COPYRIGHT -->
+        <div class="footer-layer footer-layer-signature">
+          <div class="tech-signature-block">
+            <span class="tech-prefix-label">POWERED BY</span>
+            <div class="tech-signature-badge">
+              <span class="tech-badge-dot" aria-hidden="true"></span>
+              <span class="tech-badge-name">WARSTREET EXPERIENCE MODEL</span>
+            </div>
+          </div>
+          <div class="footer-legal-copy">
+            &copy; 2026 FOODIES. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Foodies Product View Modal (Accessible Dialog) -->
+    <div 
+      class="product-modal-backdrop" 
+      id="product-view-modal" 
+      role="dialog" 
+      aria-modal="true" 
+      aria-hidden="true" 
+      aria-labelledby="modal-product-title"
+      tabindex="-1"
+    >
+      <div class="product-modal-card" id="product-modal-card">
+        <!-- Close Button -->
+        <button 
+          type="button" 
+          class="modal-close-btn" 
+          id="btn-close-modal" 
+          aria-label="Close product view"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Large High-Quality Food Photograph -->
+        <div class="modal-media-wrap">
+          <img 
+            src="" 
+            alt="" 
+            id="modal-food-img" 
+            class="modal-food-photo" 
+            loading="eager" 
+            referrerPolicy="no-referrer" 
+          />
+          <div class="modal-media-gradient" aria-hidden="true"></div>
+        </div>
+
+        <!-- Modal Body Content -->
+        <div class="modal-content-body">
+          <!-- Category & Tag -->
+          <div class="modal-header-meta">
+            <span class="modal-category-tag" id="modal-category-badge">Pizza</span>
+          </div>
+
+          <!-- Product Title -->
+          <h2 class="modal-product-title" id="modal-product-title">Product Name</h2>
+
+          <!-- Appetising Description -->
+          <p class="modal-product-desc" id="modal-product-desc">
+            Product detailed appetising ingredients and description.
+          </p>
+
+          <!-- Pizza Size Options Section (Available Sizes with Exact Prices) -->
+          <div class="modal-sizes-section" id="modal-sizes-section">
+            <div class="modal-section-title-row">
+              <span class="modal-section-title">Available Sizes</span>
+              <span class="modal-section-hint">Select 1</span>
+            </div>
+            
+            <div class="modal-sizes-group" id="modal-sizes-group" role="radiogroup" aria-label="Available Pizza Sizes">
+              <!-- Dynamically populated: Regular, Medium, Large -->
+            </div>
+          </div>
+
+          <!-- Non-Pizza Price Display Section (For Wings, Breadsticks) -->
+          <div class="modal-portion-section" id="modal-portion-section" style="display: none;">
+            <div class="portion-price-box">
+              <span class="portion-label">Single Portion Price</span>
+              <span class="portion-value" id="modal-portion-price">$4.00</span>
+            </div>
+          </div>
+
+          <!-- Quantity Stepper Section -->
+          <div class="modal-quantity-section">
+            <div class="quantity-label-col">
+              <span class="quantity-title">Quantity</span>
+              <span class="quantity-subtext">Number of items</span>
+            </div>
+            <div class="quantity-stepper" role="group" aria-label="Item quantity">
+              <button 
+                type="button" 
+                class="btn-qty-step" 
+                id="btn-qty-minus" 
+                aria-label="Decrease quantity"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+              <span class="qty-count-display" id="qty-count-val" aria-live="polite">1</span>
+              <button 
+                type="button" 
+                class="btn-qty-step" 
+                id="btn-qty-plus" 
+                aria-label="Increase quantity"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Sticky Action Footer -->
+        <div class="modal-action-footer">
+          <button 
+            type="button" 
+            class="btn-add-to-order" 
+            id="btn-modal-add-to-order"
+          >
+            <span class="btn-add-label" id="btn-add-label">Add to Order</span>
+            <span class="btn-add-divider" aria-hidden="true">•</span>
+            <span class="btn-add-total" id="modal-calc-total">$4.00</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elegant Floating Feedback Toast -->
+    <div class="foodies-toast" id="foodies-toast" role="status" aria-live="polite" aria-hidden="true">
+      <div class="toast-indicator" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <span class="toast-message" id="toast-message">Added to order</span>
+    </div>
+
+    <!-- Small, Elegant Sticky Cart Floating Button (Appears only when item count >= 1) -->
+    <div class="sticky-cart-container" id="sticky-cart-container" aria-hidden="true">
+      <button 
+        type="button" 
+        class="sticky-cart-btn" 
+        id="btn-sticky-cart" 
+        aria-label="View Order Cart"
+        aria-haspopup="dialog"
+        aria-controls="cart-drawer-modal"
+      >
+        <span class="sticky-cart-icon" aria-hidden="true">🛒</span>
+        <span class="sticky-cart-title">Order</span>
+        <span class="sticky-cart-bullet" aria-hidden="true">·</span>
+        <span class="sticky-cart-count" id="cart-btn-count">1 item</span>
+        <span class="sticky-cart-bullet" aria-hidden="true">·</span>
+        <span class="sticky-cart-total" id="cart-btn-total">$5</span>
+      </button>
+    </div>
+
+    <!-- Clean Foodies Order Drawer / Modal (Accessible Dialog) -->
+    <div 
+      class="cart-modal-backdrop" 
+      id="cart-drawer-modal" 
+      role="dialog" 
+      aria-modal="true" 
+      aria-hidden="true" 
+      aria-labelledby="cart-modal-title"
+      tabindex="-1"
+    >
+      <div class="cart-drawer-card" id="cart-drawer-card">
+        <!-- Cart Drawer Header -->
+        <div class="cart-drawer-header">
+          <div class="cart-header-title-wrap">
+            <span class="cart-header-icon" aria-hidden="true">🛒</span>
+            <div class="cart-header-headings">
+              <h2 class="cart-drawer-title" id="cart-modal-title">Review Order</h2>
+              <span class="cart-drawer-count-badge" id="cart-drawer-items-count">0 items</span>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            class="cart-close-btn" 
+            id="btn-close-cart" 
+            aria-label="Close cart and continue browsing"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cart Drawer Items Scrollable List -->
+        <div class="cart-items-scroll-area" id="cart-items-list" role="region" aria-label="Order items list">
+          <!-- Populated dynamically: Product image, name, size, unit price, quantity controls, remove, subtotal -->
+        </div>
+
+        <!-- Cart Drawer Summary & Actions Footer (Review View) -->
+        <div class="cart-drawer-footer" id="cart-drawer-footer">
+          <div class="cart-total-row">
+            <div class="cart-total-label-wrap">
+              <span class="cart-total-main-label">ORDER TOTAL</span>
+              <span class="cart-total-tax-note">Including taxes</span>
+            </div>
+            <div class="cart-total-amount" id="cart-modal-grand-total">$0</div>
+          </div>
+          
+          <div class="cart-actions-column">
+            <!-- Primary Action: SEND ORDER • $TOTAL -->
+            <button 
+              type="button" 
+              class="btn-cart-send-order" 
+              id="btn-cart-send-order"
+            >
+              <span class="btn-send-label">SEND ORDER</span>
+              <span class="btn-send-dot" aria-hidden="true">•</span>
+              <span class="btn-send-price" id="btn-send-price">$0</span>
+            </button>
+
+            <!-- Secondary Action: CONTINUE BROWSING -->
+            <button 
+              type="button" 
+              class="btn-cart-continue" 
+              id="btn-cart-continue-browsing"
+            >
+              CONTINUE BROWSING
+            </button>
+          </div>
+        </div>
+
+        <!-- Confirmation Step Overlay (Ready to Send?) -->
+        <div class="cart-confirm-view" id="cart-confirm-view" aria-hidden="true" style="display: none;">
+          <div class="cart-confirm-content">
+            <span class="confirm-badge">FINAL STEP</span>
+            <h3 class="confirm-heading">READY TO SEND?</h3>
+            <p class="confirm-subtext">Review your order before sending it to Foodies.</p>
+            
+            <div class="confirm-summary-box" id="confirm-summary-box">
+              <div class="confirm-summary-row">
+                <span class="confirm-summary-label">Items</span>
+                <span class="confirm-summary-val" id="confirm-items-val">0 items</span>
+              </div>
+              <div class="confirm-summary-row">
+                <span class="confirm-summary-label">Total to Pay</span>
+                <span class="confirm-summary-val confirm-total-highlight" id="confirm-total-val">$0</span>
+              </div>
+            </div>
+
+            <div class="confirm-error-alert" id="confirm-error-alert" role="alert" style="display: none;">
+              <span id="confirm-error-text">Unable to send order. Please try again.</span>
+            </div>
+
+            <div class="confirm-actions-group">
+              <button 
+                type="button" 
+                class="btn-confirm-send" 
+                id="btn-confirm-send"
+              >
+                <span id="btn-confirm-send-text">SEND ORDER</span>
+              </button>
+              <button 
+                type="button" 
+                class="btn-confirm-back" 
+                id="btn-confirm-back"
+              >
+                GO BACK
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Order Sent Confirmation Screen -->
+        <div class="cart-success-view" id="cart-success-view" aria-hidden="true" style="display: none;">
+          <div class="cart-success-content">
+            <div class="success-icon-badge" aria-hidden="true">
+              <span class="success-checkmark">✓</span>
+            </div>
+
+            <h3 class="success-title">ORDER SENT</h3>
+
+            <p class="success-lead-text">
+              Your order has been successfully sent to Foodies.
+            </p>
+
+            <div class="success-order-number-card">
+              <span class="order-number-label">ORDER NUMBER</span>
+              <span class="order-number-value" id="success-order-number">#1001</span>
+            </div>
+
+            <p class="success-status-note">
+              Your order is now being received by the Foodies team.
+            </p>
+
+            <button 
+              type="button" 
+              class="btn-success-back" 
+              id="btn-success-back-to-menu"
+            >
+              BACK TO MENU
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vanilla JavaScript Module (Zero build step) -->
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>
